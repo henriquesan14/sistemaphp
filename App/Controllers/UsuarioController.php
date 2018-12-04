@@ -53,7 +53,15 @@ class UsuarioController extends Controller
 
     public function index()
     {
-        $this->redirect('/usuario/cadastro');
+        $usuarioDAO = new UsuarioDAO();
+ 
+        self::setViewParam('listaUsuarios',$usuarioDAO->listar());
+ 
+        $this->render('/usuario/index');
+ 
+        Sessao::limpaMensagem();
     }
+
+    
 
 }

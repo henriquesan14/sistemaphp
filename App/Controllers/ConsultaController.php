@@ -4,14 +4,19 @@ namespace App\Controllers;
 
 use App\Lib\Sessao;
 use App\Models\DAO\ConsultaDAO;
+use App\Models\DAO\MedicoDAO;
+use App\Models\DAO\PacienteDAO;
 use App\Models\Entidades\Consulta;
 
 class ConsultaController extends Controller
 {
     public function cadastro()
     {
+        $medicoDAO = new MedicoDAO();
+        self::setViewParam('listaMedicos',$medicoDAO->listar());
+        $pacienteDAO = new PacienteDAO();
+        self::setViewParam('listaPacientes',$pacienteDAO->listar());
         $this->render('/consulta/cadastro');
-
         Sessao::limpaFormulario();
         Sessao::limpaMensagem();
     }
@@ -50,7 +55,13 @@ class ConsultaController extends Controller
 
     public function index()
     {
-        $this->redirect('/usuario/cadastro');
+        $consultaDAO = new ConsultaDAO();
+
+        self::setViewParam('listaConsultas',$consultaDAO->listar());
+
+        $this->render('/consulta/index');
+
+        Sessao::limpaMensagem();
     }
 
 }

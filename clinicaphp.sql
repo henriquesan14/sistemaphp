@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 04-Dez-2018 às 17:07
+-- Generation Time: 04-Dez-2018 às 19:12
 -- Versão do servidor: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -29,12 +29,23 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `consulta` (
-  `id_consulta` int(11) NOT NULL,
-  `data_consulta` date NOT NULL,
+  `id` int(11) NOT NULL,
+  `data` date NOT NULL,
   `turno` varchar(50) NOT NULL,
-  `id_medico_fk` int(11) NOT NULL,
-  `id_paciente_fk` int(11) NOT NULL
+  `idMedico` int(11) NOT NULL,
+  `idPaciente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `consulta`
+--
+
+INSERT INTO `consulta` (`id`, `data`, `turno`, `idMedico`, `idPaciente`) VALUES
+(1, '2018-12-04', 'manha', 1, 1),
+(2, '2018-12-04', 'manha', 1, 1),
+(3, '2018-12-04', 'tarde', 2, 2),
+(4, '2018-12-04', 'manha', 1, 1),
+(5, '2018-12-27', 'manha', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -43,7 +54,7 @@ CREATE TABLE `consulta` (
 --
 
 CREATE TABLE `medico` (
-  `id_medico` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
   `especialidade` varchar(100) NOT NULL,
   `crm` varchar(50) NOT NULL,
@@ -55,8 +66,9 @@ CREATE TABLE `medico` (
 -- Extraindo dados da tabela `medico`
 --
 
-INSERT INTO `medico` (`id_medico`, `nome`, `especialidade`, `crm`, `cpf`, `telefone`) VALUES
-(1, 'henrique', 'CARDIO', '1111111111', '11111111111', '0000000000');
+INSERT INTO `medico` (`id`, `nome`, `especialidade`, `crm`, `cpf`, `telefone`) VALUES
+(1, 'henrique', 'CARDIO', '1111111111', '11111111111', '0000000000'),
+(2, 'sergio ramos', 'nutricionista', '1111111111', '11111111111', '0000000000');
 
 -- --------------------------------------------------------
 
@@ -65,7 +77,7 @@ INSERT INTO `medico` (`id_medico`, `nome`, `especialidade`, `crm`, `cpf`, `telef
 --
 
 CREATE TABLE `paciente` (
-  `id_paciente` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
   `cpf` varchar(11) NOT NULL,
   `rg` varchar(14) NOT NULL,
@@ -76,8 +88,10 @@ CREATE TABLE `paciente` (
 -- Extraindo dados da tabela `paciente`
 --
 
-INSERT INTO `paciente` (`id_paciente`, `nome`, `cpf`, `rg`, `telefone`) VALUES
-(1, 'henrique', '11111111111', '11111111111', '0000000000');
+INSERT INTO `paciente` (`id`, `nome`, `cpf`, `rg`, `telefone`) VALUES
+(1, 'henrique', '11111111111', '11111111111', '0000000000'),
+(2, 'henrique santos', '11111111111', '11111111111', '0000000000'),
+(3, 'henrique', '11111111111', '11111111111', '0000000000');
 
 -- --------------------------------------------------------
 
@@ -86,7 +100,7 @@ INSERT INTO `paciente` (`id_paciente`, `nome`, `cpf`, `rg`, `telefone`) VALUES
 --
 
 CREATE TABLE `usuario` (
-  `id_usuario` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `senha` varchar(32) NOT NULL
@@ -96,7 +110,7 @@ CREATE TABLE `usuario` (
 -- Extraindo dados da tabela `usuario`
 --
 
-INSERT INTO `usuario` (`id_usuario`, `nome`, `email`, `senha`) VALUES
+INSERT INTO `usuario` (`id`, `nome`, `email`, `senha`) VALUES
 (1, 'henrique', 'ricogx@hotmail.com', '123456'),
 (2, 'henrique', 'ricogx2@hotmail.com', '123456');
 
@@ -108,25 +122,25 @@ INSERT INTO `usuario` (`id_usuario`, `nome`, `email`, `senha`) VALUES
 -- Indexes for table `consulta`
 --
 ALTER TABLE `consulta`
-  ADD PRIMARY KEY (`id_consulta`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `medico`
 --
 ALTER TABLE `medico`
-  ADD PRIMARY KEY (`id_medico`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `paciente`
 --
 ALTER TABLE `paciente`
-  ADD PRIMARY KEY (`id_paciente`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id_usuario`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -136,25 +150,25 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `consulta`
 --
 ALTER TABLE `consulta`
-  MODIFY `id_consulta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `medico`
 --
 ALTER TABLE `medico`
-  MODIFY `id_medico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `id_paciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

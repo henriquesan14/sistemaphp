@@ -42,7 +42,6 @@ class Medico{
 	public function setCrm($crm) {
 	    $this->crm = $crm;
 	}
-	
 
 	public function getCpf() {
 	    return $this->cpf;

@@ -17,6 +17,7 @@ class Paciente{
 	public function setId($id) {
 	    $this->id = $id;
 	}
+	
 
 	public function getNome() {
 	    return $this->nome;

@@ -28,6 +28,16 @@ class PacienteDAO extends BaseDAO
             throw new \Exception("Erro na gravação de dados.", 500);
         }
     }
+
+    public  function listar()
+    {
+ 
+        $resultado = $this->select(
+            'SELECT id , nome, cpf,rg, telefone FROM paciente'
+        );
+        return $resultado->fetchAll(\PDO::FETCH_CLASS, Paciente::class);
+ 
+    }
 }
 
 ?>

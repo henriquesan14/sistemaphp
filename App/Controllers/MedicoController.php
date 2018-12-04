@@ -51,7 +51,13 @@ class MedicoController extends Controller
 
     public function index()
     {
-        $this->redirect('/medico/cadastro');
+        $medicoDAO = new MedicoDAO();
+ 
+        self::setViewParam('listaMedicos',$medicoDAO->listar());
+ 
+        $this->render('/medico/index');
+ 
+        Sessao::limpaMensagem();
     }
 
 }

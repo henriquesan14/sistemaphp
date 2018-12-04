@@ -30,6 +30,16 @@ class MedicoDAO extends BaseDAO
             throw new \Exception("Erro na gravação de dados.", 500);
         }
     }
+
+    public  function listar()
+    {
+ 
+        $resultado = $this->select(
+            'SELECT id , nome,especialidade,crm,cpf,telefone FROM medico'
+        );
+        return $resultado->fetchAll(\PDO::FETCH_CLASS, Medico::class);
+ 
+    }
 }
 
 ?>

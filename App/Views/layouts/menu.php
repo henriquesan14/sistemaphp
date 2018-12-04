@@ -23,6 +23,9 @@
                 <li <?php if($viewVar['nameController'] == "MedicoController") { ?> class="active" <?php } ?>>
                     <a href="http://<?php echo APP_HOST; ?>/medico/cadastro" >Cadastro de Médico</a>
                 </li>
+                <li <?php if($viewVar['nameController'] == "ConsultaController") { ?> class="active" <?php } ?>>
+                    <a href="http://<?php echo APP_HOST; ?>/consulta/cadastro" >Cadastro de Consulta</a>
+                </li>
             </ul>
         </div>
     </div>

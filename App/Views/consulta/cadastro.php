@@ -13,26 +13,38 @@
                     <label for="data">Data</label>
                     <input type="date" class="form-control"  name="data" placeholder="Seu nome" value="<?php echo $Sessao::retornaValorFormulario('data'); ?>" required>
                 </div>
+                
                 <div class="form-group">
                     <label for="turno">Turno</label>
-                    <input type="text" class="form-control" name="turno" placeholder="" value="<?php echo $Sessao::retornaValorFormulario('turno'); ?>" required>
+                    <select class="form-control" name="turno" value="<?php echo $Sessao::retornaValorFormulario('turno'); ?>" required>
+                        <option value="manha">Manhã</option>
+                        <option value="tarde">Tarde</option>
+                        <option value="noite">Noite</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Médico</label>
+                    <select class="form-control" name="medico"  required>
+
+                        <?php foreach($viewVar['listaMedicos'] as $Medico): ?>
+                        <option value="<?php echo $Medico->getId(); ?>" <?php echo ($Sessao::retornaValorFormulario('medico') == $Medico->getId())? "selected" : ""; ?>><?php echo $Medico->getNome(); ?></option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="turno">Medico</label>
-                    <input type="text" class="form-control" name="medico" placeholder="" value="<?php echo $Sessao::retornaValorFormulario('medico'); ?>" required>
+                    <label>Paciente</label>
+                    <select class="form-control" name="paciente"  required>
+
+                        <?php foreach($viewVar['listaPacientes'] as $Paciente): ?>
+                        <option value="<?php echo $Paciente->getId(); ?>" <?php echo ($Sessao::retornaValorFormulario('paciente') == $Paciente->getId())? "selected" : ""; ?>><?php echo $Paciente->getNome(); ?></option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
 
-                <div class="form-group">
-                    <label for="turno">Paciente</label>
-                    <input type="text" class="form-control" name="paciente" placeholder="" value="<?php echo $Sessao::retornaValorFormulario('paciente'); ?>" required>
-                </div>
 
                 
-
-                
-
-
                 <button type="submit" class="btn btn-success btn-sm">Salvar</button>
             </form>
         </div>

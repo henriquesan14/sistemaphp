@@ -50,7 +50,13 @@ class PacienteController extends Controller
 
     public function index()
     {
-        $this->redirect('/usuario/cadastro');
+        $pacienteDAO = new PacienteDAO();
+ 
+        self::setViewParam('listaPacientes',$pacienteDAO->listar());
+ 
+        $this->render('/paciente/index');
+ 
+        Sessao::limpaMensagem();
     }
 
 }
