@@ -58,8 +58,8 @@ class UsuarioDAO extends BaseDAO
 
             $id             = $usuario->getId();
             $nome           = $usuario->getNome();
-            $email          = $email->getEmail();
-            $senha          = $senha->getSenha();
+            $email          = $usuario->getEmail();
+            $senha          = $usuario->getSenha();
 
             return $this->update(
                 'usuario',
@@ -89,5 +89,15 @@ class UsuarioDAO extends BaseDAO
 
             throw new \Exception("Erro ao excluir", 500);
         }
+    }
+
+    public  function getById($id)
+    {
+        $resultado = $this->select(
+            "SELECT id, nome,email,senha FROM usuario WHERE id = $id"
+        );
+
+        return $resultado->fetchObject(Usuario::class);
+
     }
 }

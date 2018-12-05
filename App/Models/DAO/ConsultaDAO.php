@@ -63,6 +63,59 @@ class ConsultaDAO extends BaseDAO
 
         return false;
     }
+
+    public  function atualizar(Consulta $consulta)
+    {
+        try {
+
+            $id             = $consulta->getId();
+            $data      = $consulta->getData();
+            $turno     = $consulta->getTurno();
+            $medico     = $consulta->getMedico()->getId();
+            $paciente     = $consulta->getPaciente()->getId();
+            
+
+            return $this->update(
+                'consulta',
+                "data = :data, turno= :turno, idMedico = :idMedico,idPaciente = :idPaciente",
+                [
+                    ':id'=>$id,
+                    ':data'=>$data,
+                    ':turno'=>$turno,
+                    ':idMedico'=>$medico,
+                    ':idPaciente'=>$paciente
+                    
+                ],
+                "id = :id"
+            );
+
+        } catch (\Exception $e) {
+            throw new \Exception("Erro na gravação de dados.", 500);
+        }
+    }
+
+    public function excluir(Consulta $consulta)
+    {
+        try {
+            $id = $consulta->getId();
+
+            return $this->delete('consulta',"id = $id");
+
+        }catch (Exception $e){
+
+            throw new \Exception("Erro ao excluir", 500);
+        }
+    }
+
+    public  function getById($id)
+    {
+        $resultado = $this->select(
+            "SELECT id, data,turno,idMedico,idPaciente FROM consulta WHERE id = $id"
+        );
+
+        return $resultado->fetchObject(Consulta::class);
+
+    }
 }
 
 ?>

@@ -53,4 +53,91 @@ class MedicoController extends Controller
         Sessao::limpaMensagem();
     }
 
+    public function edicao($params)
+    {
+        $id = $params[0];
+
+        $medicoDAO = new MedicoDAO();
+
+        $medico = $medicoDAO->getById($id);
+
+        if(!$medico){
+            Sessao::gravaMensagem("Medico inexistente");
+            $this->redirect('/medico');
+        }
+
+        self::setViewParam('medico',$medico);
+
+        $this->render('/medico/editar');
+
+        Sessao::limpaMensagem();
+
+    }
+
+    public function atualizar()
+    {
+
+        $Medico = new Medico();
+        $Medico->setId($_POST['id']);
+        $Medico->setNome($_POST['nome']);
+        $Medico->setEspecialidade([$_POST['especialidade']]);
+        $Medico->setCrm($_POST['crm']);
+        $Medico->setCpf($_POST['cpf']);
+        $Medico->setTelefone($_POST['telefone']);
+
+        Sessao::gravaFormulario($_POST);
+
+
+        $medicoDAO = new MedicoDAO();
+
+
+        $medicoDAO->atualizar($Medico);
+
+        Sessao::limpaFormulario();
+        Sessao::limpaMensagem();
+        Sessao::gravaMensagem("Medico Atualizado");
+
+        $this->redirect('/medico');
+
+    }
+    
+    public function exclusao($params)
+    {
+        $id = $params[0];
+
+        $medicoDAO = new MedicoDAO();
+
+        $medico = $medicoDAO->getById($id);
+
+        if(!$medico){
+            Sessao::gravaMensagem("Medico inexistente");
+            $this->redirect('/medico');
+        }
+
+        self::setViewParam('medico',$medico);
+
+        $this->render('/medico/exclusao');
+
+        Sessao::limpaMensagem();
+    }
+
+    public function excluir()
+    {
+        $Medico = new Medico();
+        $Medico->setId($_POST['id']);
+
+        $medicoDAO = new MedicoDAO();
+
+
+        if(!$medicoDAO->excluir($Medico)){
+            Sessao::gravaMensagem("Medico inexistente");
+            $this->redirect('/medico');
+        }
+
+        Sessao::gravaMensagem("Medico excluido com sucesso!");
+
+        $this->redirect('/medico');
+
+    }
+
 }

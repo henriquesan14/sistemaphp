@@ -11,15 +11,18 @@
                     <label for="data">Data</label>
                     <input type="date" class="form-control"  name="data" placeholder="Seu nome" value="<?php echo $Sessao::retornaValorFormulario('data'); ?>" required>
                 </div>
-                
+
                 <div class="form-group col-md-6">
-                    <label for="turno">Turno</label>
-                    <select class="form-control" name="turno" value="<?php echo $Sessao::retornaValorFormulario('turno'); ?>" required>
-                        <option value="manha">Manhã</option>
-                        <option value="tarde">Tarde</option>
-                        <option value="noite">Noite</option>
+                    <label>Turno</label>
+                    <select class="form-control" name="turno"  required>
+
+                        <?php foreach($viewVar['listaTurnos'] as $turno): ?>
+                        <option value="<?php echo $turno; ?>" <?php echo ($Sessao::retornaValorFormulario('turno') == $turno)? "selected" : ""; ?>><?php echo $turno; ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
+                
+                
 
                 <div class="form-group col-md-6">
                     <label>Médico</label>
