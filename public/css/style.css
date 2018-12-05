@@ -108,6 +108,14 @@ background: #04BC4A; color: #fff; }
   margin-top: 5px;
 }
 
+.label.label-danger{
+  font-size:15px;
+}
+
+.label.label-success{
+  font-size:15px;
+}
+
 @media (max-width: 800px) {
   .scroll-table{
   overflow-x: auto;

@@ -43,7 +43,7 @@
 
 
         <div class="form-group col-md-12">
-          <input type="submit" class="btn btn-success" value="Cadastrar">
+          <input type="submit" class="btn btn-success" value="Agendar">
           <a class="btn btn-default" href="?pg=analytics">Cancelar</a>
         </div>
       </form>

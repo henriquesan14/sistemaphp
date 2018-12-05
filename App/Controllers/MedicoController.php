@@ -31,23 +31,16 @@ class MedicoController extends Controller
 
 
         if($medicoDAO->salvar($Medico)){
-            $this->redirect('/medico/sucesso');
+            Sessao::gravaMensagem("Médico cadastrado com sucesso!");
+            Sessao::limpaFormulario();
+            $this->redirect('/medico/index');
+            
         }else{
             Sessao::gravaMensagem("Erro ao gravar");
         }
     }
     
-    public function sucesso()
-    {
-        if(Sessao::retornaValorFormulario('nome')) {
-            $this->render('/usuario/sucesso');
-
-            Sessao::limpaFormulario();
-            Sessao::limpaMensagem();
-        }else{
-            $this->redirect('/');
-        }
-    }
+    
 
     public function index()
     {

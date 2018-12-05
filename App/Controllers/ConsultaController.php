@@ -35,23 +35,15 @@ class ConsultaController extends Controller
 
 
         if($consultaDAO->salvar($Consulta)){
-            $this->redirect('/consulta/sucesso');
+            Sessao::gravaMensagem("Consulta agendada com sucesso!");
+            Sessao::limpaFormulario();
+            $this->redirect('/consulta/index');
         }else{
             Sessao::gravaMensagem("Erro ao gravar");
         }
     }
     
-    public function sucesso()
-    {
-        if(Sessao::retornaValorFormulario('nome')) {
-            $this->render('/usuario/sucesso');
-
-            Sessao::limpaFormulario();
-            Sessao::limpaMensagem();
-        }else{
-            $this->redirect('/');
-        }
-    }
+    
 
     public function index()
     {

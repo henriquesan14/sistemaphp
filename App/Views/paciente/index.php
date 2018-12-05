@@ -2,9 +2,10 @@
         
         <div class="row col-md-12">
             <?php if($Sessao::retornaMensagem()){ ?>
-                <div class="alert alert-warning" role="alert">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <div class="col-md-12" >
+                    <span class="label label-success">
                     <?php echo $Sessao::retornaMensagem(); ?>
+                    </span>
                 </div>
             <?php } ?>
 

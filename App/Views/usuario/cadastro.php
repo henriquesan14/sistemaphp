@@ -1,4 +1,7 @@
 <div class="row col-md-12">
+  <?php if($Sessao::retornaMensagem()){ ?>
+                <div class="col-md-12"><span class="label label-danger"><?php echo $Sessao::retornaMensagem(); ?></span></div>
+            <?php } ?>
 <div class = "panel panel-info col-md-12">
      <div class = "panel-heading">
         <h3 class = "panel-title text-center">Novo Usuário</h3>

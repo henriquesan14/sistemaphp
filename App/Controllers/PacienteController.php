@@ -30,23 +30,15 @@ class PacienteController extends Controller
 
 
         if($pacienteDAO->salvar($Paciente)){
-            $this->redirect('/paciente/sucesso');
+            Sessao::gravaMensagem("Paciente cadastrado com sucesso!");
+            Sessao::limpaFormulario();
+            $this->redirect('/paciente/index');
         }else{
             Sessao::gravaMensagem("Erro ao gravar");
         }
     }
     
-    public function sucesso()
-    {
-        if(Sessao::retornaValorFormulario('nome')) {
-            $this->render('/usuario/sucesso');
-
-            Sessao::limpaFormulario();
-            Sessao::limpaMensagem();
-        }else{
-            $this->redirect('/');
-        }
-    }
+    
 
     public function index()
     {
