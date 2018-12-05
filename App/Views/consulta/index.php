@@ -1,11 +1,6 @@
-<div class="container">
-    <div class="row">
-    <br>
-    <div class="col-md-12">
-        <a href="http://<?php echo APP_HOST; ?>/consulta/cadastro" class="btn btn-success btn-sm">Adicionar</a>
-        <hr>
-    </div>
-    <div class="col-md-12">
+
+    
+    <div class="row col-md-12">
         <?php if($Sessao::retornaMensagem()){ ?>
             <div class="alert alert-warning" role="alert">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -21,15 +16,22 @@
             } else {
         ?>
             
+            <div class = "panel panel-info col-md-12">
+               <div class = "panel-heading">
+                  <h3 class = "panel-title text-center">Consultas</h3>
+               </div>
+               <div class = "panel-body">
             <div class="table-responsive">
-                <table class="table table-bordered table-hover">
-                    <tr>
-                        <td class="info">Id</td>
-                        <td class="info">Data</td>
-                        <td class="info">Turno</td>
-                        <td class="info">Paciente</td>
-                        <td class="info">Médico</td>
-                    </tr>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th >Id</th>
+                            <th >Data</th>
+                            <th >Turno</th>
+                            <th >Paciente</th>
+                            <th >Médico</th>
+                        </tr>
+                    </thead>
                     <?php
                         foreach($viewVar['listaConsultas'] as $consulta) {
                     ?>
@@ -41,8 +43,8 @@
                             <td><?php echo $consulta->getMedico()->getNome(); ?></td>
 
                             <td>
-                                <a href="http://<?php echo APP_HOST; ?>/consulta/edicao/<?php echo $consulta->getId(); ?>" class="btn btn-info btn-sm">Editar</a>
-                                <a href="http://<?php echo APP_HOST; ?>/consulta/exclusao/<?php echo $consulta->getId(); ?>" class="btn btn-danger btn-sm">Excluir</a>
+                                <a href="http://<?php echo APP_HOST; ?>/consulta/edicao/<?php echo $consulta->getId(); ?>" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                                <a href="http://<?php echo APP_HOST; ?>/consulta/exclusao/<?php echo $consulta->getId(); ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
                     <?php

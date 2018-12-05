@@ -1,11 +1,6 @@
-<div class="container">
-    <div class="row">
-        <br>
-        <div class="col-md-12">
-            <a href="http://<?php echo APP_HOST; ?>/usuario/cadastro" class="btn btn-success btn-sm">Adicionar</a>
-            <hr>
-        </div>
-        <div class="col-md-12">
+
+        
+        <div class="row col-md-12">
             <?php if($Sessao::retornaMensagem()){ ?>
                 <div class="alert alert-warning" role="alert">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -16,18 +11,24 @@
             <?php
                 if(!count($viewVar['listaUsuarios'])){
             ?>
-                <div class="alert alert-info" role="alert">Nenhum usuario encontrado</div>
+                <div class="alert alert-info" role="alert">Nenhum paciente encontrado</div>
             <?php
                 } else {
             ?>
 
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover">
+              <div class = "panel panel-info col-md-12">
+               <div class = "panel-heading">
+                  <h3 class = "panel-title text-center">Usuários</h3>
+               </div>
+               <div class = "panel-body">
+                <div class="table">
+                    <table class="table table-hover">
                         <tr>
-                            <td class="info">Id</td>
-                            <td class="info">Nome</td>
-                            <td class="info">Email</td>
-                            <td class="info">Senha</td>
+                            <th >Id</th>
+                            <th >Nome</th>
+                            <th >Email</th>
+                            <th >Senha</th>
+                            
                         </tr>
                         <?php
                             foreach($viewVar['listaUsuarios'] as $usuario) {
@@ -38,8 +39,8 @@
                                 <td><?php echo $usuario->getEmail(); ?></td>
                                 <td><?php echo $usuario->getSenha(); ?></td>
                                 <td>
-                                    <a href="http://<?php echo APP_HOST; ?>/usuario/edicao/<?php echo $usuario->getId(); ?>" class="btn btn-info btn-sm">Editar</a>
-                                    <a href="http://<?php echo APP_HOST; ?>/usuario/exclusao/<?php echo $usuario->getId(); ?>" class="btn btn-danger btn-sm">Excluir</a>
+                                    <a href="http://<?php echo APP_HOST; ?>/usuario/edicao/<?php echo $usuario->getId(); ?>" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                                    <a href="http://<?php echo APP_HOST; ?>/usuario/exclusao/<?php echo $usuario->getId(); ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>
                         <?php
@@ -47,9 +48,10 @@
                         ?>
                     </table>
                 </div>
+              </div>
+            </div>
             <?php
                 }
             ?>
         </div>
-    </div>
-</div>
+    

@@ -1,11 +1,6 @@
-<div class="container">
-    <div class="row">
-        <br>
-        <div class="col-md-12">
-            <a href="http://<?php echo APP_HOST; ?>/paciente/cadastro" class="btn btn-success btn-sm">Adicionar</a>
-            <hr>
-        </div>
-        <div class="col-md-12">
+
+        
+        <div class="row col-md-12">
             <?php if($Sessao::retornaMensagem()){ ?>
                 <div class="alert alert-warning" role="alert">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -21,15 +16,22 @@
                 } else {
             ?>
 
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover">
-                        <tr>
-                            <td class="info">Id</td>
-                            <td class="info">Nome</td>
-                            <td class="info">CPF</td>
-                            <td class="info">RG</td>
-                            <td class="info">Telefone</td>
-                        </tr>
+              <div class = "panel panel-info col-md-12">
+               <div class = "panel-heading">
+                  <h3 class = "panel-title text-center">Pacientes</h3>
+               </div>
+               <div class = "panel-body">
+                <div class="table">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th >Id</th>
+                                <th >Nome</th>
+                                <th >CPF</th>
+                                <th >RG</th>
+                                <th >Telefone</th>
+                            </tr>
+                        </thead>
                         <?php
                             foreach($viewVar['listaPacientes'] as $paciente) {
                         ?>
@@ -40,8 +42,8 @@
                                 <td><?php echo $paciente->getRg(); ?></td>
                                 <td><?php echo $paciente->getTelefone(); ?></td>
                                 <td>
-                                    <a href="http://<?php echo APP_HOST; ?>/paciente/edicao/<?php echo $paciente->getId(); ?>" class="btn btn-info btn-sm">Editar</a>
-                                    <a href="http://<?php echo APP_HOST; ?>/paciente/exclusao/<?php echo $paciente->getId(); ?>" class="btn btn-danger btn-sm">Excluir</a>
+                                    <a href="http://<?php echo APP_HOST; ?>/paciente/edicao/<?php echo $paciente->getId(); ?>" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                                    <a href="http://<?php echo APP_HOST; ?>/paciente/exclusao/<?php echo $paciente->getId(); ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>
                         <?php
@@ -49,9 +51,10 @@
                         ?>
                     </table>
                 </div>
+              </div>
+            </div>
             <?php
                 }
             ?>
         </div>
-    </div>
-</div>
+    

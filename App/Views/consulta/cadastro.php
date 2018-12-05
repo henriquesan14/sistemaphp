@@ -1,20 +1,18 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-            <h3>Cadastro de Consultas</h3>
-
-            <?php if($Sessao::retornaMensagem()){ ?>
-                <div class="alert alert-warning" role="alert"><?php echo $Sessao::retornaMensagem(); ?></div>
-            <?php } ?>
-
-            <form action="http://<?php echo APP_HOST; ?>/consulta/salvar" method="post" id="form_cadastro">
-                <div class="form-group">
+<div class="row col-md-12">  
+  <div class = "panel panel-info col-md-12">
+       <div class = "panel-heading">
+          <h3 class = "panel-title text-center">Nova Consulta </h3>
+       </div>
+     
+       <div class = "panel-body">
+        <form action="http://<?php echo APP_HOST; ?>/consulta/salvar" method="post" id="form_cadastro">
+      
+         <div class="form-group col-md-6">
                     <label for="data">Data</label>
                     <input type="date" class="form-control"  name="data" placeholder="Seu nome" value="<?php echo $Sessao::retornaValorFormulario('data'); ?>" required>
                 </div>
                 
-                <div class="form-group">
+                <div class="form-group col-md-6">
                     <label for="turno">Turno</label>
                     <select class="form-control" name="turno" value="<?php echo $Sessao::retornaValorFormulario('turno'); ?>" required>
                         <option value="manha">Manhã</option>
@@ -23,7 +21,7 @@
                     </select>
                 </div>
 
-                <div>
+                <div class="form-group col-md-6">
                     <label>Médico</label>
                     <select class="form-control" name="medico"  required>
 
@@ -33,7 +31,7 @@
                     </select>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-md-6">
                     <label>Paciente</label>
                     <select class="form-control" name="paciente"  required>
 
@@ -44,10 +42,10 @@
                 </div>
 
 
-                
-                <button type="submit" class="btn btn-success btn-sm">Salvar</button>
-            </form>
+        <div class="form-group col-md-12">
+          <input type="submit" class="btn btn-success" value="Cadastrar">
+          <a class="btn btn-default" href="?pg=analytics">Cancelar</a>
         </div>
-        <div class=" col-md-3"></div>
+      </form>
+      </div>
     </div>
-</div>
