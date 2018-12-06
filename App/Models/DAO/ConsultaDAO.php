@@ -116,6 +116,8 @@ class ConsultaDAO extends BaseDAO
         return $resultado->fetchObject(Consulta::class);
 
     }
+
+    
 }
 
 ?>

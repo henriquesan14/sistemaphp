@@ -14,7 +14,7 @@ class ConsultaController extends Controller
     {
         $medicoDAO = new MedicoDAO();
 
-        $turnos = array('Manhã','Tarde','Noite' );
+        $turnos = array('Manha','Tarde','Noite' );
 
         self::setViewParam('listaTurnos',$turnos);
 
@@ -34,9 +34,12 @@ class ConsultaController extends Controller
         $Consulta->getMedico()->setId($_POST['medico']);
         $Consulta->getPaciente()->setId($_POST['paciente']);
 
+
+
         Sessao::gravaFormulario($_POST);
 
         $consultaDAO = new ConsultaDAO();
+
 
 
         if($consultaDAO->salvar($Consulta)){
@@ -74,7 +77,8 @@ class ConsultaController extends Controller
             $this->redirect('/consulta');
         }
 
-        $turnos = array('Manhã','Tarde','Noite' );
+        $turnos = array('Manha','Tarde','Noite');
+        
 
         self::setViewParam('listaTurnos',$turnos);
 
@@ -98,7 +102,7 @@ class ConsultaController extends Controller
         $Consulta = new Consulta();
         $Consulta->setId($_POST['id']);
         $Consulta->setData($_POST['data']);
-        $Consulta->setTurno([$_POST['turno']]);
+        $Consulta->setTurno($_POST['turno']);
         $Consulta->getMedico()->setId($_POST['medico']);
         $Consulta->getPaciente()->setId($_POST['paciente']);
 
@@ -120,6 +124,7 @@ class ConsultaController extends Controller
     
     public function exclusao($params)
     {
+
         $id = $params[0];
 
         $consultaDAO = new ConsultaDAO();
@@ -146,7 +151,7 @@ class ConsultaController extends Controller
         $consultaDAO = new ConsultaDAO();
 
 
-        if(!$consulta->excluir($Consulta)){
+        if(!$consultaDAO->excluir($Consulta)){
             Sessao::gravaMensagem("Consulta inexistente");
             $this->redirect('/consulta');
         }
@@ -156,5 +161,7 @@ class ConsultaController extends Controller
         $this->redirect('/consulta');
 
     }
+
+    
 
 }

@@ -1,0 +1,39 @@
+<?php
+
+namespace App\Controllers;
+
+use App\Lib\Sessao;
+use App\Models\DAO\UsuarioDAO;
+use App\Models\Entidades\Usuario;
+
+class AuthController extends Controller
+{
+
+    public function login()
+    {
+        $this->render('/login');
+
+    }
+
+    public function validaUsuario(){
+        $usuarioDAO = new UsuarioDAO();
+        $usuario = $usuarioDAO->validaUsuario();
+
+        if(!$usuario){
+            Sessao::gravaMensagem("Login ou Senha incorreto(s)");
+            $this->redirect('/login');
+        }
+
+        self::setViewParam('usuarioLogado',$usuario));
+ 
+        $this->render('/usuario/index');
+    }
+
+    public function deslogaUsuario(){
+        
+    }
+
+    
+    
+
+}

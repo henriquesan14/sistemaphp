@@ -19,11 +19,12 @@
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label for="medico">Turno</label>
-                    <select class="form-control" name="medico"  required>
+                    <label for="turno">Turno</label>
+                    <select class="form-control" name="turno"  required>
                         <?php foreach($viewVar['listaTurnos'] as $turno): ?>
                             <option value="<?php echo $turno; ?>" <?php echo ( $viewVar['consulta']->getTurno() == $turno)? "selected" : ""; ?>><?php echo $turno; ?></option>
                         <?php endforeach; ?>
+
                     </select>
                 </div>
                 
@@ -47,8 +48,6 @@
                 </div>
 
                
-
-
                 <div class="form-group col-md-12">
                     <button type="submit" class="btn btn-success btn-sm">Salvar</button>
                     <a href="http://<?php echo APP_HOST; ?>/consulta" class="btn btn-info btn-sm">Voltar</a>

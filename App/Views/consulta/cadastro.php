@@ -17,9 +17,11 @@
                     <select class="form-control" name="turno"  required>
 
                         <?php foreach($viewVar['listaTurnos'] as $turno): ?>
+
                         <option value="<?php echo $turno; ?>" <?php echo ($Sessao::retornaValorFormulario('turno') == $turno)? "selected" : ""; ?>><?php echo $turno; ?></option>
                         <?php endforeach; ?>
                     </select>
+                    
                 </div>
                 
                 

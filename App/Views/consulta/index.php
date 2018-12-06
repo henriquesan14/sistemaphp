@@ -38,7 +38,7 @@
                     ?>
                         <tr>
                             <td><?php echo $consulta->getId(); ?></td>
-                            <td><?php echo $consulta->getData(); ?></td>
+                            <td><?php echo date('d/m/Y', strtotime($consulta->getData())); ?></td>
                             <td><?php echo $consulta->getTurno(); ?></td>
                             <td><?php echo $consulta->getPaciente()->getNome(); ?></td>
                             <td><?php echo $consulta->getMedico()->getNome(); ?></td>
