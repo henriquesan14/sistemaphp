@@ -9,22 +9,24 @@ use App\Models\Entidades\Usuario;
 class AuthController extends Controller
 {
 
-    public function login()
-    {
-        $this->render('/login');
-
+    public function index(){
+        $this->render('/auth/index');
     }
 
-    public function validaUsuario(){
+    
+
+    public function logar(){
         $usuarioDAO = new UsuarioDAO();
-        $usuario = $usuarioDAO->validaUsuario();
+        $email = $_POST['nome'];
+        $senha = $_POST['senha'];
+        $usuario = $usuarioDAO->validaUsuario($email,$senha);
 
         if(!$usuario){
             Sessao::gravaMensagem("Login ou Senha incorreto(s)");
             $this->redirect('/login');
         }
 
-        self::setViewParam('usuarioLogado',$usuario));
+        self::setViewParam('usuarioLogado',$usuario);
  
         $this->render('/usuario/index');
     }

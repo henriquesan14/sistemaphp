@@ -27,7 +27,7 @@
                     <thead>
                         <tr>
                             <th >Id</th>
-                            <th >Data</th>
+                            <th >Data da Consulta</th>
                             <th >Turno</th>
                             <th >Paciente</th>
                             <th >Médico</th>

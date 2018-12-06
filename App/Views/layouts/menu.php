@@ -4,7 +4,7 @@
         <div class="menu menu-open" >
             <ul>
               <li class="visible-xs"><a href="#"><i class="fas fa-sign-out-alt"></i>Sair</a></li>
-              <li><a href="?pg=analytics"><i class="fas fa-chart-bar"></i><span>Analytics</span></a>
+              <li><a href="http://<?php echo APP_HOST; ?>/home"><i class="fas fa-chart-bar"></i><span>Analytics</span></a>
               </li> <!--fim analytics-->
 
               <li class="abrir-menu"><a href="#"><i class="fas fa-user"></i><span>Pacientes</span></a>
@@ -50,6 +50,8 @@
                   </li>
                 </ul> <!--fim submenu-->
               </li>
+
+              
 
             </ul> <!-- fim menu principal-->
         </div> <!--fim aside-->

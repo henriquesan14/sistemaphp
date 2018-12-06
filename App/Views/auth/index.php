@@ -5,12 +5,12 @@
     <title>Login</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link href="http://<?php echo APP_HOST; ?>/public/css/estilo-login.css" rel="stylesheet">
+    <link href="public/css/estilo-login.css" rel="stylesheet">
 </head>
 <body>
     <div id="form-container">
         <div class="panel" id="form-box">
-            <form action="login.php" method="post">
+            <form action="logar.php" method="post">
                 <img src="imagens/user.png">
  
                 <div class="form-group">
@@ -19,7 +19,7 @@
                         <div class="input-group-addon">
                             <i class="fas fa-user"></i>
                         </div>
-                        <input type="text" name="usuario" class="form-control" placeholder="Seu login de usuário">
+                        <input type="email" name="email" class="form-control" placeholder="Seu email">
                     </div>
                 </div>
  

@@ -117,6 +117,32 @@ class ConsultaDAO extends BaseDAO
 
     }
 
+    public  function consultasHoje($data)
+    {
+        if($data) {
+            $resultado = $this->select(
+                "SELECT count(*) as total FROM consulta WHERE data= $data"
+            );
+ 
+            return $resultado->fetch()['total'];
+        }
+ 
+        return false;
+    }
+
+    public  function consultasMes($mes)
+    {
+        if($mes) {
+            $resultado = $this->select(
+                "SELECT count(*) as total FROM consulta WHERE MONTH(data) = $mes"
+            );
+ 
+            return $resultado->fetch()['total'];
+        }
+ 
+        return false;
+    }
+
     
 }
 
