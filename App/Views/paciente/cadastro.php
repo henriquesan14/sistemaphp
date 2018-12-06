@@ -27,7 +27,7 @@
                 </div>
       <div class="form-group col-md-12">
         <input type="submit" class="btn  btn-success" value="Cadastrar">
-        <a class="btn btn-default" href="#">Cancelar</a>
+        <a href="http://<?php echo APP_HOST; ?>/paciente" class="btn btn-info btn-sm">Voltar</a>
       </div>
     </form>
     </div>

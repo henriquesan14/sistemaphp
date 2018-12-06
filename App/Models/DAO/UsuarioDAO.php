@@ -92,7 +92,7 @@ class UsuarioDAO extends BaseDAO
     }
 
     public function validaUsuario($email,$senha){
-        $resultado = $this->select("SELECT * FROM usuario WHERE email = $email AND senha = $senha");
+        $resultado = $this->select("SELECT id,nome,email,senha FROM usuario WHERE email = $email AND senha = $senha");
 
         return $resultado->fetchObject(Usuario::class);
     }

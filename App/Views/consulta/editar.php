@@ -14,7 +14,7 @@
                 <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $viewVar['consulta']->getId(); ?>">
 
                 <div class="form-group col-md-6">
-                    <label for="data">Data</label>
+                    <label for="data">Data da consulta</label>
                     <input type="date"  class="form-control" name="data" id="data" placeholder="" value="<?php echo $viewVar['consulta']->getData(); ?>" required>
                 </div>
 

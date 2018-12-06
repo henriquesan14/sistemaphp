@@ -8,7 +8,7 @@
         <form action="http://<?php echo APP_HOST; ?>/consulta/salvar" method="post" id="form_cadastro">
       
          <div class="form-group col-md-6">
-                    <label for="data">Data</label>
+                    <label for="data">Data da consulta</label>
                     <input type="date" class="form-control"  name="data" placeholder="Seu nome" value="<?php echo $Sessao::retornaValorFormulario('data'); ?>" required>
                 </div>
 
@@ -49,7 +49,7 @@
 
         <div class="form-group col-md-12">
           <input type="submit" class="btn btn-success" value="Agendar">
-          <a class="btn btn-default" href="?pg=analytics">Cancelar</a>
+          <a href="http://<?php echo APP_HOST; ?>/consulta" class="btn btn-info btn-sm">Voltar</a>
         </div>
       </form>
       </div>
