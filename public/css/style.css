@@ -116,6 +116,8 @@ background: #04BC4A; color: #fff; }
   font-size:15px;
 }
 
+
+
 @media (max-width: 800px) {
   .scroll-table{
   overflow-x: auto;

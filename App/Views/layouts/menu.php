@@ -3,7 +3,7 @@
         
         <div class="menu menu-open" >
             <ul>
-              <li class="visible-xs"><a href="#"><i class="fas fa-sign-out-alt"></i>Sair</a></li>
+              <li class="visible-xs"><a href="http://<?php echo APP_HOST; ?>/auth/desloga"><i class="fas fa-sign-out-alt"></i>Sair</a></li>
               <li><a href="http://<?php echo APP_HOST; ?>/home"><i class="fas fa-chart-bar"></i><span>Analytics</span></a>
               </li> <!--fim analytics-->
 

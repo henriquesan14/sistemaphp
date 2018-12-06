@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(empty($_SESSION['usuario'])){
+    
+}
+?>
 <div class="col-sm-6">
                 <div class = "panel panel-info ">
                     <div class = "panel-heading">

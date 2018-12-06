@@ -1,4 +1,9 @@
-
+<?php
+session_start();
+if(empty($_SESSION['usuario'])){
+  echo "erro";
+}
+?>
     
     <div class="row col-md-12">
         <?php if($Sessao::retornaMensagem()){ ?>

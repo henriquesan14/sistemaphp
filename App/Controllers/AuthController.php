@@ -11,28 +11,34 @@ class AuthController extends Controller
 
     public function index(){
         $this->render('/auth/index');
+        Sessao::limpaMensagem();
     }
 
     
 
     public function logar(){
         $usuarioDAO = new UsuarioDAO();
-        $email = $_POST['nome'];
+        $email = $_POST['email'];
         $senha = $_POST['senha'];
         $usuario = $usuarioDAO->validaUsuario($email,$senha);
+        
 
         if(!$usuario){
-            Sessao::gravaMensagem("Login ou Senha incorreto(s)");
-            $this->redirect('/login');
+            Sessao::gravaMensagem("Login ou Senha incorretos");
+            $this->redirect('/auth/index');
+            Sessao::limpaMensagem();
+            
         }
-
-        self::setViewParam('usuarioLogado',$usuario);
+        Sessao::gravaUsuario($usuario);
  
-        $this->render('/usuario/index');
+        echo "ok";
+        $this->redirect('/home');
     }
 
-    public function deslogaUsuario(){
-        
+    public function desloga(){
+        Sessao::deslogaUsuario();
+        Sessao::gravaMensagem("Desconectado");
+        $this->redirect('/auth/index');
     }
 
     

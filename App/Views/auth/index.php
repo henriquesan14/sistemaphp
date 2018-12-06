@@ -5,13 +5,14 @@
     <title>Login</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link href="public/css/estilo-login.css" rel="stylesheet">
+    
 </head>
 <body>
+    
     <div id="form-container">
         <div class="panel" id="form-box">
-            <form action="logar.php" method="post">
-                <img src="imagens/user.png">
+            <form action="http://<?php echo APP_HOST; ?>/auth/logar" method="post">
+                
  
                 <div class="form-group">
                     <label class="sr-only" for="login">Usuário</label>
@@ -19,7 +20,7 @@
                         <div class="input-group-addon">
                             <i class="fas fa-user"></i>
                         </div>
-                        <input type="email" name="email" class="form-control" placeholder="Seu email">
+                        <input type="email" name="email" class="form-control " placeholder="Digite Seu email">
                     </div>
                 </div>
  
@@ -41,5 +42,12 @@
             </form>
         </div>
     </div>
+    <?php if($Sessao::retornaMensagem()){ ?>
+            <div class="col-md-12">
+                <span class="label label-danger">
+                <?php echo $Sessao::retornaMensagem(); ?>
+                </span>
+            </div>
+        <?php } ?>
 </body>
 </html>

@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(empty($_SESSION['usuario'])){
+  echo "erro";
+}
+?>
 <div class="row col-md-12">  
   <div class = "panel panel-info col-md-12">
        <div class = "panel-heading">

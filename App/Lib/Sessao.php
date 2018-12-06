@@ -31,4 +31,16 @@ class Sessao
     public static function existeFormulario(){
         return (isset($_SESSION['form'])) ? $_SESSION['form'] : "";
     }
+
+    public static function retornaUsuario(){
+        return ($_SESSION['usuario']) ? $_SESSION['usuario'] : "";
+    }
+
+    public static function gravaUsuario($usuario){
+        $_SESSION['usuario'] = $usuario;
+    }
+
+    public static function deslogaUsuario(){
+        unset($_SESSION['usuario']);
+    }
 }

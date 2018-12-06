@@ -31,7 +31,7 @@
 
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><i class="fas fa-sign-out-alt"></i>Sair</a></li>
+                    <li><a href="http://<?php echo APP_HOST; ?>/auth/desloga"><i class="fas fa-sign-out-alt"></i>Sair</a></li>
                 </ul>
             </div> <!--fim bnt sair-->
 
