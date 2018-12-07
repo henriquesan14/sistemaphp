@@ -10,7 +10,7 @@ class AuthController extends Controller
 {
 
     public function index(){
-        $this->render('/auth/index');
+        $this->renderLogin('/auth/index');
         Sessao::limpaMensagem();
     }
 

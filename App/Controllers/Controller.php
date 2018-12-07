@@ -19,10 +19,23 @@ abstract class Controller
         $viewVar = $this->getViewVar();
         $Sessao  = Sessao::class;
 
-        require_once PATH . '/App/Views/layouts/header.php';
-        require_once PATH . '/App/Views/layouts/menu.php';
+        if(empty($_SESSION['usuario'])){
+        header('Location: http://' . APP_HOST . '/auth');
+        }else{
+           require_once PATH . '/App/Views/layouts/header.php';
+            require_once PATH . '/App/Views/layouts/menu.php';
+            require_once PATH . '/App/Views/' . $view . '.php';
+            require_once PATH . '/App/Views/layouts/footer.php'; 
+        }       
+        
+    }
+
+    public function renderLogin($view)
+    {
+        $viewVar = $this->getViewVar();
+        $Sessao  = Sessao::class;
+
         require_once PATH . '/App/Views/' . $view . '.php';
-        require_once PATH . '/App/Views/layouts/footer.php';
     }
 
     public function redirect($view)

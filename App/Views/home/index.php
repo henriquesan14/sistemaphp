@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(empty($_SESSION['usuario'])){
-    
+    header('Location: http://' . APP_HOST . '/home/index');
 }
 ?>
 <div class="col-sm-6">
