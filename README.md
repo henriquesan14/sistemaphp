@@ -3,6 +3,7 @@
 ### Tecnologias usadas: 
 >Back-end
 * PHP com padrão MVC sem uso de frameworks
+* MySQL
 * Composer
 
 >Front-end
