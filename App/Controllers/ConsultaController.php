@@ -14,14 +14,17 @@ class ConsultaController extends Controller
     {
         $medicoDAO = new MedicoDAO();
 
-        $turnos = array('Manha','Tarde','Noite' );
+        $turnos = array('Manha', 'Tarde', 'Noite');
 
-        self::setViewParam('listaTurnos',$turnos);
-
-        self::setViewParam('listaMedicos',$medicoDAO->listar());
+        self::setViewParam('listaTurnos', $turnos);
+        self::setViewParam('listaMedicos', $medicoDAO->listar());
+        
         $pacienteDAO = new PacienteDAO();
-        self::setViewParam('listaPacientes',$pacienteDAO->listar());
+        
+        self::setViewParam('listaPacientes', $pacienteDAO->listar());
+        
         $this->render('/consulta/cadastro');
+        
         Sessao::limpaFormulario();
         Sessao::limpaMensagem();
     }
@@ -34,13 +37,9 @@ class ConsultaController extends Controller
         $Consulta->getMedico()->setId($_POST['medico']);
         $Consulta->getPaciente()->setId($_POST['paciente']);
 
-
-
         Sessao::gravaFormulario($_POST);
 
         $consultaDAO = new ConsultaDAO();
-
-
 
         if($consultaDAO->salvar($Consulta)){
             Sessao::gravaMensagem("Consulta agendada com sucesso!");
@@ -50,14 +49,12 @@ class ConsultaController extends Controller
             Sessao::gravaMensagem("Erro ao gravar");
         }
     }
-    
-    
 
     public function index()
     {
         $consultaDAO = new ConsultaDAO();
 
-        self::setViewParam('listaConsultas',$consultaDAO->listar());
+        self::setViewParam('listaConsultas', $consultaDAO->listar());
 
         $this->render('/consulta/index');
 
@@ -77,18 +74,17 @@ class ConsultaController extends Controller
             $this->redirect('/consulta');
         }
 
-        $turnos = array('Manha','Tarde','Noite');
-        
+        $turnos = array('Manha', 'Tarde', 'Noite');
 
-        self::setViewParam('listaTurnos',$turnos);
+        self::setViewParam('listaTurnos', $turnos);
 
         $medicoDAO = new MedicoDAO();
-        self::setViewParam('listaMedicos',$medicoDAO->listar());
+        self::setViewParam('listaMedicos', $medicoDAO->listar());
 
         $pacienteDAO = new PacienteDAO();
-        self::setViewParam('listaPacientes',$pacienteDAO->listar());
+        self::setViewParam('listaPacientes', $pacienteDAO->listar());
 
-        self::setViewParam('consulta',$consulta);
+        self::setViewParam('consulta', $consulta);
 
         $this->render('/consulta/editar');
 
@@ -98,7 +94,6 @@ class ConsultaController extends Controller
 
     public function atualizar()
     {
-
         $Consulta = new Consulta();
         $Consulta->setId($_POST['id']);
         $Consulta->setData($_POST['data']);
@@ -108,15 +103,13 @@ class ConsultaController extends Controller
 
         Sessao::gravaFormulario($_POST);
 
-
         $consultaDAO = new ConsultaDAO();
-
 
         $consultaDAO->atualizar($Consulta);
 
         Sessao::limpaFormulario();
         Sessao::limpaMensagem();
-        Sessao::gravaMensagem("Consulta Atualizada");
+        Sessao::gravaMensagem('Consulta Atualizada');
 
         $this->redirect('/consulta');
 
@@ -124,7 +117,6 @@ class ConsultaController extends Controller
     
     public function exclusao($params)
     {
-
         $id = $params[0];
 
         $consultaDAO = new ConsultaDAO();
@@ -132,11 +124,11 @@ class ConsultaController extends Controller
         $consulta = $consultaDAO->getById($id);
 
         if(!$consulta){
-            Sessao::gravaMensagem("Consulta inexistente");
+            Sessao::gravaMensagem('Consulta inexistente');
             $this->redirect('/consulta');
         }
 
-        self::setViewParam('consulta',$consulta);
+        self::setViewParam('consulta', $consulta);
 
         $this->render('/consulta/exclusao');
 
@@ -150,18 +142,13 @@ class ConsultaController extends Controller
 
         $consultaDAO = new ConsultaDAO();
 
-
         if(!$consultaDAO->excluir($Consulta)){
-            Sessao::gravaMensagem("Consulta inexistente");
+            Sessao::gravaMensagem('Consulta inexistente');
             $this->redirect('/consulta');
         }
 
-        Sessao::gravaMensagem("Consulta excluida com sucesso!");
+        Sessao::gravaMensagem('Consulta excluida com sucesso!');
 
         $this->redirect('/consulta');
-
     }
-
-    
-
 }
