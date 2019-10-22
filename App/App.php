@@ -15,17 +15,14 @@ class App
 
     public function __construct()
     {
-        /*
-         * Constantes do sistema
-         */
-        define('APP_HOST'       , $_SERVER['HTTP_HOST'] . "/sistema-php");
-        define('PATH'           , realpath('./'));
-        define('TITLE'          , "App Clinica");
-        define('DB_HOST'        , "localhost");
-        define('DB_USER'        , "root");
-        define('DB_PASSWORD'    , "");
-        define('DB_NAME'        , "clinicaphp");
-        define('DB_DRIVER'      , "mysql");
+        define('APP_HOST' , $_SERVER['HTTP_HOST'] . "/sistema-php");
+        define('PATH' , realpath('./'));
+        define('TITLE' , "App Clinica");
+        define('DB_HOST' , "localhost");
+        define('DB_USER' , "root");
+        define('DB_PASSWORD' , "");
+        define('DB_NAME' , "clinicaphp");
+        define('DB_DRIVER' , "mysql");
 
         $this->url();
     }
@@ -39,8 +36,8 @@ class App
             $this->controllerName = "HomeController";
         }
 
-        $this->controllerFile   = $this->controllerName . '.php';
-        $this->action           = preg_replace('/[^a-zA-Z]/i', '', $this->action);
+        $this->controllerFile = $this->controllerName . '.php';
+        $this->action = preg_replace('/[^a-zA-Z]/i', '', $this->action);
 
         if (!$this->controller) {
             $this->controller = new HomeController($this);
@@ -67,26 +64,26 @@ class App
         } else {
             throw new Exception("Nosso suporte já esta verificando desculpe!", 500);
         }
+        
         throw new Exception("Página não encontrada.", 404);
     }
 
-    public function url () {
-
-        if ( isset( $_GET['url'] ) ) {
-
+    public function url () 
+    {
+        if (isset($_GET['url'])) {
             $path = $_GET['url'];
             $path = rtrim($path, '/');
             $path = filter_var($path, FILTER_SANITIZE_URL); 
 
             $path = explode('/', $path);
 
-            $this->controller  = $this->verificaArray( $path, 0 );
-            $this->action      = $this->verificaArray( $path, 1 );
+            $this->controller = $this->verificaArray($path, 0);
+            $this->action = $this->verificaArray($path, 1);
 
-            if ( $this->verificaArray( $path, 2 ) ) {
-                unset( $path[0] );
-                unset( $path[1] );
-                $this->params = array_values( $path );
+            if ($this->verificaArray($path, 2)) {
+                unset($path[0]);
+                unset($path[1]);
+                $this->params = array_values($path);
             }
         }
     }
@@ -111,10 +108,11 @@ class App
         return $this->params;
     }
 
-    private function verificaArray ( $array, $key ) {
-        if ( isset( $array[ $key ] ) && !empty( $array[ $key ] ) ) {
-            return $array[ $key ];
+    private function verificaArray($array, $key) {
+        if (isset($array[$key]) && !empty($array[$key])) {
+            return $array[$key];
         }
+        
         return null;
     }
 }
