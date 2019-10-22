@@ -8,36 +8,37 @@ use App\Models\Entidades\Usuario;
 
 class AuthController extends Controller
 {
-
-    public function index(){
+    public function index()
+    {
         $this->renderLogin('/auth/index');
         Sessao::limpaMensagem();
     }
 
-    
-
-    public function logar(){
+    public function logar()
+    {
         $usuarioDAO = new UsuarioDAO();
         $email = $_POST['email'];
         $senha = $_POST['senha'];
-        $usuario = $usuarioDAO->validaUsuario($email,$senha);
+        $usuario = $usuarioDAO->validaUsuario($email, $senha);
         
-
         if(!$usuario){
-            Sessao::gravaMensagem("Login ou Senha incorretos");
+            Sessao::gravaMensagem('Login ou Senha incorretos');
             $this->redirect('/auth/index');
             Sessao::limpaMensagem();
-            
         }
+        
         Sessao::gravaUsuario($usuario);
  
-        echo "ok";
+        echo 'ok';
+        
         $this->redirect('/home');
     }
 
-    public function desloga(){
+    public function desloga()
+    {
         Sessao::deslogaUsuario();
-        Sessao::gravaMensagem("Desconectado");
+        Sessao::gravaMensagem('Desconectado');
+        
         $this->redirect('/auth/index');
     }
 
